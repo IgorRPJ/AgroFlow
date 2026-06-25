@@ -1,0 +1,218 @@
+const solutions = [
+    {
+        icon: "bi-droplet-fill",
+        color: "blue",
+        title: "Gestão Hídrica Inteligente",
+        description:
+            "Sistema completo de monitoramento e controle de irrigação com sensores IoT de umidade do solo, previsão meteorológica integrada e automação de sistemas de irrigação.",
+        features: [
+            "Sensores de umidade em tempo real",
+            "Previsão de chuva integrada",
+            "Automação de irrigação",
+            "Economia de até 40% de água"
+        ],
+        price: "A partir de R$ 1.999/mês"
+    },
+    {
+        icon: "bi-tree-fill",
+        color: "green",
+        title: "Monitoramento de Cultivo",
+        description:
+            "Acompanhe a saúde das suas plantas com análise de imagens por satélite, detecção precoce de pragas e doenças, e recomendações personalizadas de manejo.",
+        features: [
+            "Imagens de satélite semanais",
+            "Detecção de pragas e doenças",
+            "Índices de vegetação (NDVI)",
+            "Alertas de anomalias"
+        ],
+        price: "A partir de R$ 2.499/mês"
+    },
+    {
+        icon: "bi-bar-chart-fill",
+        color: "purple",
+        title: "Analytics & Inteligência",
+        description:
+            "Dashboard completo com análise preditiva, relatórios de produtividade, comparação histórica e recomendações de IA para otimização de recursos.",
+        features: [
+            "Dashboards personalizáveis",
+            "Análise preditiva com IA",
+            "Relatórios automatizados",
+            "Comparativos históricos"
+        ],
+        price: "A partir de R$ 1.499/mês"
+    },
+    {
+        icon: "bi-cloud-rain-fill",
+        color: "sky",
+        title: "Estação Meteorológica",
+        description:
+            "Dados meteorológicos precisos direto da sua fazenda. Monitoramento de temperatura, umidade, vento, radiação solar e precipitação em tempo real.",
+        features: [
+            "Sensores de última geração",
+            "Previsão localizada 7 dias",
+            "Alertas meteorológicos",
+            "Histórico climático completo"
+        ],
+        price: "A partir de R$ 899/mês"
+    },
+    {
+        icon: "bi-thermometer-half",
+        color: "orange",
+        title: "Monitoramento de Solo",
+        description:
+            "Análise completa do solo com sensores de pH, nutrientes, temperatura e condutividade elétrica. Recomendações de adubação personalizadas.",
+        features: [
+            "Análise de pH e nutrientes",
+            "Mapas de fertilidade",
+            "Recomendações de adubação",
+            "Economia em insumos"
+        ],
+        price: "A partir de R$ 1.799/mês"
+    },
+    {
+        icon: "bi-lightning-charge-fill",
+        color: "yellow",
+        title: "Automação Completa",
+        description:
+            "Controle total da sua fazenda na palma da mão. Automação de irrigação, fertirrigação, ventilação e cortinas. Integração com equipamentos existentes.",
+        features: [
+            "Controle remoto via app",
+            "Agendamento inteligente",
+            "Integração de equipamentos",
+            "Logs de todas as operações"
+        ],
+        price: "A partir de R$ 3.499/mês"
+    }
+];
+const packages = [
+    {
+        name: "Starter",
+        price: "R$ 999",
+        period: "/mês",
+        description:
+            "Ideal para pequenas propriedades iniciando na tecnologia",
+        features: [
+            "1 Estação meteorológica",
+            "Dashboard básico",
+            "Suporte por e-mail",
+            "Até 50 hectares"
+        ],
+        highlighted: false
+    },
+    {
+        name: "Professional",
+        price: "R$ 2.999",
+        period: "/mês",
+        description:
+            "Solução completa para médios produtores",
+        features: [
+            "Todas as soluções incluídas",
+            "Dashboard avançado com IA",
+            "Suporte prioritário 24/7",
+            "Até 500 hectares",
+            "Consultoria mensal",
+            "Treinamento da equipe"
+        ],
+        highlighted: true
+    },
+    {
+        name: "Enterprise",
+        price: "Customizado",
+        period: "",
+        description:
+            "Solução sob medida para grandes operações",
+        features: [
+            "Todas as funcionalidades",
+            "Infraestrutura dedicada",
+            "Suporte 24/7 com SLA",
+            "Área ilimitada",
+            "Consultoria semanal",
+            "Integrações customizadas"
+        ],
+        highlighted: false
+    }
+];
+const solutionsContainer =
+    document.getElementById(
+        "solutionsContainer"
+    );
+solutions.forEach(solution => {
+    solutionsContainer.innerHTML += `
+    <div class="col-md-6 col-lg-4">
+      <div class="solution-card">
+        <div class="solution-icon icon-${solution.color}">
+          <i class="bi ${solution.icon}"></i>
+        </div>
+        <h3 class="fw-bold mb-3">
+          ${solution.title}
+        </h3>
+        <p class="text-secondary">
+          ${solution.description}
+        </p>
+        <ul class="feature-list">
+          ${solution.features.map(feature => `
+            <li>
+              <i class="bi bi-check-circle-fill"></i>
+              <span>
+                ${feature}
+              </span>
+            </li>
+          `).join("")}
+        </ul>
+        <p class="solution-price mt-4 mb-0">
+          ${solution.price}
+        </p>
+      </div>
+    </div>
+  `;
+});
+const packagesContainer =
+    document.getElementById(
+        "packagesContainer"
+    );
+packages.forEach(pkg => {
+    packagesContainer.innerHTML += `
+    <div class="col-md-4">
+      <div class="package-card ${pkg.highlighted ? 'package-highlighted' : 'package-default'}">
+        ${pkg.highlighted
+            ? `
+            <div class="badge-popular">
+              Mais Popular
+            </div>
+          `
+            : ""
+        }
+        <h3 class="fw-bold mb-2">
+          ${pkg.name}
+        </h3>
+        <p class="text-secondary mb-4">
+          ${pkg.description}
+        </p>
+        <div class="mb-4">
+          <span class="package-price">
+            ${pkg.price}
+          </span>
+          <span class="package-period">
+            ${pkg.period}
+          </span>
+        </div>
+        <ul class="feature-list mb-4">
+          ${pkg.features.map(feature => `
+            <li>
+              <i class="bi bi-check-circle-fill"></i>
+              <span>
+                ${feature}
+              </span>
+            </li>
+          `).join("")}
+        </ul>
+        <a
+          href="screens/contato.html"
+          class="btn btn-success w-100 btn-lg"
+        >
+          Solicitar Orçamento
+        </a>
+      </div>
+    </div>
+  `;
+});
